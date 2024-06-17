@@ -5,7 +5,7 @@ pkgrel=20
 arch=('x86_64')
 license=('APACHE')
 url="https://github.com/uw-imap/imap"
-makedepends=('pam' 'git' 'gcc12' 'gcc12-libs')
+makedepends=('gcc12' 'gcc12-libs''pam' 'git')
 source=("imap-src::git+https://github.com/uw-imap/imap.git#tag=patches-FD29-RPM"
         'c-client-2006k_GENTOO_amd64-so-fix.patch')
 options=('staticlibs')
