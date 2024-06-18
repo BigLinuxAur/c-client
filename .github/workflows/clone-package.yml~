@@ -48,8 +48,9 @@ jobs:
         run: |
           gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
           cd $gitfolder
-          # sed -i "/\bdepends=/s/(/\('xpto\' 'xpto3\' 'xpto2\' /" PKGBUILD
           sed -i "/makedepends=/s/(/\('gcc12\' 'gcc12-libs\'/" PKGBUILD
+          sed -i '/EXTRAAUTHENTICATORS/s/.*/  yes "y" | make -j"$(nproc)" lnp CC=\/usr\/bin\/gcc-12 EXTRAAUTHENTICATORS=gss PASSWDTYPE=pam SPECIALAUTHENTICATORS=ssl SSLTYPE=unix EXTRACFLAGS="${CFLAGS} -fPIC -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lpam" EXTRALDFLAGS="${LDFLAGS}"/' PKGBUILD
+          # sed -i "/\bdepends=/s/(/\('xpto\' 'xpto3\' 'xpto2\' /" PKGBUILD
           # sed -i '/\bdepends=/!b; :a; n; a\    '\'xpto\' PKGBUILD
 
       - name: Update github
